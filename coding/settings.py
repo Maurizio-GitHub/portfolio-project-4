@@ -71,6 +71,7 @@ TEMPLATES = [
     },
 ]
 
+# Web Services Gateway Interface is a standard for Python to work with servers
 WSGI_APPLICATION = 'coding.wsgi.application'
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
