@@ -14,23 +14,31 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-# To build paths inside the project following this: BASE_DIR / 'subdir'
+# To build paths inside the project, follow this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Where templates files are
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+# Stored into env.py
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+# To be switched to False before going to production
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# List of allowed hosts
+ALLOWED_HOSTS = ['my-own-blog.herokuapp.com', 'localhost']
 
-# Application definition
+# cloudinary_storage goes before django.contrib.staticfiles, cloudinary after
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'blog',
 ]
 
@@ -46,10 +54,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'coding.urls'
 
+# With TEMPLATES_DIR set up as above, after BASE_DIR
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,14 +94,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# Internationalization settings
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files - like CSS, JavaScript, Images - settings
 STATIC_URL = 'static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Pictures and other media settings
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
