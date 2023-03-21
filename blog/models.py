@@ -7,25 +7,21 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
-# Seen as a PSEUDO (no links) Dimension-Table for status field of Post-Table
-class PostStatus(models.Model):
-
-    # Sublclassing and leveraging IntegerChoices
-    class Status(models.IntegerChoices):
-        DRAFT = 0
-        PUBLISHED = 1
-
-
 # Class-based model for blog posts: blank=False, null=False are the default
 class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     excerpt = models.TextField()
     content = models.TextField()
-    status = models.IntegerField(choices=Status.choices, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     featured_image = CloudinaryField('image', default='placeholder')
+
+    # As choices:
+    # 1st element in each tuple is the actual model value
+    # 2nd element is the human-readable name
+    status = models.IntegerField(choices=tuple(zip(
+        (0, 1), ('Draft', 'Published'))), default=0)
 
     # One-To-Many relationship author-posts with referential integrity
     author = models.ForeignKey(
@@ -33,7 +29,7 @@ class Post(models.Model):
 
     # Many-To-Many relationship users-likes
     likes = models.ManyToManyField(
-        User, related_name='post_likes', blank=True, null=True)
+        User, related_name='post_likes', blank=True)
 
     # Sorting in descending order, based on creation date
     class Meta:

@@ -30,6 +30,10 @@ DEBUG = True
 # List of allowed hosts
 ALLOWED_HOSTS = ['my-own-blog.herokuapp.com', 'localhost']
 
+# Required from Django 4.0
+ALLOWED_ORIGINS = ['http://*.gitpod.io', 'https://*.gitpod.io', 'https://localhost', 'http://my-own-blog.herokuapp.com', 'https://my-own-blog.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ALLOWED_ORIGINS.copy()
+
 # cloudinary_storage goes before django.contrib.staticfiles, cloudinary after
 INSTALLED_APPS = [
     'django.contrib.admin',
