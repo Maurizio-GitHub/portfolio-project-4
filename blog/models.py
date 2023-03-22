@@ -9,6 +9,7 @@ from cloudinary.models import CloudinaryField
 
 # Class-based model for blog posts: blank=False, null=False are the default
 class Post(models.Model):
+
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
     excerpt = models.TextField()
