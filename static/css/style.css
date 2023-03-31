@@ -45,7 +45,7 @@ body {
 }
 
 .social-networks>li {
-    display: inline;
+    display: inline-block;
 }
 
 .social-networks i {
