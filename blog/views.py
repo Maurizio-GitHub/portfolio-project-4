@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm
 
@@ -13,7 +14,7 @@ class PostList(generic.ListView):
     paginate_by = 9
 
 
-# Class-based view to render in-full each specific post
+# Class-based view to render in-full each specific content and comment a post
 class PostDetail(View):
 
     # Definition of our get-method
@@ -69,3 +70,18 @@ class PostDetail(View):
                 "liked": liked
             },
         )
+
+
+# Class-based view to like/unlike posts via toggling & page-reload
+class PostLike(View):
+
+    def post(self, request, slug, *args, **kwargs):
+
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('post-detail', args=[slug]))
