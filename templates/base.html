@@ -79,12 +79,10 @@
                     </li>
                 </ul>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-custom" type="submit">
-                        <i class="fa-solid fa-magnifying-glass" type="submit"></i>
-                    </button>
-                </form>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <span class="brand">Maurizi<span class="red-o">o</span>'s Bl<span class="red-o">o</span>g</span>
+                </a>
+
             </div>
         </div>
     </nav>
@@ -107,12 +105,11 @@
         {% endblock content %}
     </main>
 
-    <footer class="footer mt-auto py-3 f-bg">
+    <footer class="footer mt-auto py-3 footer-bg">
 
-        <p class="m-0 text-center text-white">Maurizio's Blog &copy;</p>
-        <p class="m-0 text-center text-white">Follow me:</p>
+        <p class="m-0 text-center text-white call-to-action">Follow me:</p>
 
-        <ul class="social-networks">
+        <ul class="social-networks mt-3">
             <li>
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener"
                     aria-label="Visit my Facebook page (it opens in a new tab)">

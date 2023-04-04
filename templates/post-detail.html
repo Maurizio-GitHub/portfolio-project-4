@@ -92,9 +92,9 @@
                 {% for comment in comments %}
                     <div class="comments" style="padding: 10px;">
                         <p class="font-weight-bold">
-                            {{ comment.commentator }}
-                            <span class=" text-muted font-weight-normal">
-                                {{ comment.created_on }}
+                            {{ comment.commentator }}, on
+                            <span class="text-secondary">
+                                {{ comment.created_on|date:"D, d M Y, H:i"}},
                             </span> wrote:
                         </p>
                         {{ comment.body | linebreaks }}
@@ -111,10 +111,10 @@
                     <h3>Leave a comment:</h3>
                     <p>Posting as: {{ user.username }}</p>
 
-                    <form method="post" style="margin-top: 1.3em;">
+                    <form method="post" style="margin-top: 1.5em;">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        <button type="submit" class="btn btn-custom btn-lg">Submit</button>
                     </form>
                 {% endif %}
 

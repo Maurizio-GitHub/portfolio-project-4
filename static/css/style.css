@@ -10,34 +10,38 @@ body {
 
 .brand {
     font-size: 1.5rem;
-    color: #474748;
+    color: #4b4b4b;
 }
 
 .red-o {
-    color: #e84610;
+    color: #e85f10;
 }
 
 .form-control:focus {
-    border-color: #e84610;
+    border-color: #e85f10;
     box-shadow: 0 0 0 0.2rem rgba(253, 63, 3, 0.5);
 }
 
 .btn-custom {
-    background-color: #e84610;
-    color: #f8f9fa;
+    background-color: #e85f10;
+    color: #fafafa;
 }
 
 .btn-custom:hover {
-    background-color: #f8f9fa;;
-    color: #e84610
+    background-color: #fafafa;;
+    color: #e85f10
 }
 
 .light-bg {
     background-color: f8f9fa;
 }
 
-.f-bg {
-    background-color: #e84610;
+.footer-bg {
+    background-color: #e85f10;
+}
+
+.call-to-action {
+    font-size: 1.1rem;
 }
 
 .social-networks {
@@ -49,13 +53,13 @@ body {
 }
 
 .social-networks i {
-    color: #f8f9fa;
+    color: #fafafa;
     font-size: 1.1rem;
     margin: 0.5rem 2rem 0.1rem 0;
 }
 
 .main-bg {
-    background-color: #f8f9fa;
+    background-color: #eaeaea;
 }
 
 .card {
@@ -76,7 +80,7 @@ body {
 }
 
 .author {
-    color: #f8f9fa;
+    color: #fafafa;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -92,7 +96,7 @@ body {
 
 .masthead-text {
     background-color: #445261;
-    color: #f8f9fa;
+    color: #fafafa;
     position: relative;
 }
 
@@ -122,12 +126,12 @@ body {
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #e85f10;
 }
 
 .page-link:hover {
-    background-color: #E84610;
-    color: #f8f9fa;
+    background-color: #e85f10;
+    color: #fafafa;
 }
 
 .post-title {
@@ -142,12 +146,12 @@ body {
 
 .btn-signup {
     background-color: #23BBBB;
-    color: #f8f9fa;
+    color: #fafafa;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #f8f9fa;
+    background-color: #fafafa;
     color: #23BBBB;
 }
 
@@ -163,14 +167,14 @@ body {
 }
 
 .btn-like {
-    color: #E84610;
+    color: #e85f10;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #e85f10;
     background: transparent;
     border: none;
 }
